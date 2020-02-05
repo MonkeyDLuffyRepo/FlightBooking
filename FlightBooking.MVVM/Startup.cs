@@ -52,15 +52,7 @@ namespace FlightBooking.MVVM
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Flight V1");
-            });
+          
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -90,6 +82,7 @@ namespace FlightBooking.MVVM
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+           
         }
     }
 }
