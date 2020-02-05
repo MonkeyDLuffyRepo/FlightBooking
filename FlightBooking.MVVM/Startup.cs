@@ -1,3 +1,5 @@
+using FlightBooking.BR.Interfaces;
+using FlightBooking.BR.Services;
 using FlightBooking.Entities.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,8 @@ namespace FlightBooking.MVVM
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            //Register Logic Services
+            services.AddTransient<IFlightInterface, FlightService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +52,15 @@ namespace FlightBooking.MVVM
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Flight V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
