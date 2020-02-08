@@ -1,0 +1,82 @@
+<div class="jumbotron">
+<form (ngSubmit)="addNewFlight(addForm)" #addForm="ngForm">
+    <h3>Add Flight </h3>
+    <hr />
+    <div class="container">
+      <div class="row" style="display: flex">
+          <!-- Airport From input -->
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label for="flightFromId">Airport From :</label>
+              <select name="flightFromId" id="flightFromId" class="name form-control"
+                      (change)="getSelectedAirportFrom($event)">
+                <option selected value="undefined">Select Airport </option>
+                <option *ngFor="let airport of airports" [value]="airport.id">{{airport.name}} </option>
+              </select>
+            </div>
+          </div>
+          <!-- Airport From information -->
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label >City and Country :</label>
+              <input type="text" class=" form-control" [(ngModel)]="airportFromInfo" name="airportFromInfo" disabled>
+            </div>
+          </div>
+            <!-- Airport To input -->
+        <div class="col-md-6">
+            <div class="form-group ">
+              <label for="flightToId">Airport To :</label>
+              <select name="flightToId" id="flightToId" class="name form-control"
+                      (change)="getSelectedAirportTo($event)">
+                <option selected value="undefined">Select Airport</option>
+                <option *ngFor="let airport of airports" [value]="airport.id">{{airport.name}} </option>
+              </select>
+            </div>
+          </div>
+           <!-- Airport To information -->
+           <div class="col-md-6">
+            <div class="form-group ">
+              <label >City and Country :</label>
+              <input type="text" class=" form-control" [(ngModel)]="airportToInfo" name="airportToInfo" disabled>
+            </div>
+          </div>
+             <!-- Plane input -->
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label for="planeId">Choice Plane :</label>
+              <select name="planeId" id="planeId" class="name form-control"
+                      (change)="getSelectedAirportTo($event)">
+                <option selected value="undefined">Select Plane</option>
+                <option *ngFor="let plane of planes" [value]="plane.id">{{plane.name}} </option>
+              </select>
+            </div>
+          </div>
+            <!-- Plane  information -->
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label >Plane Speed :</label>
+                <input type="text" class=" form-control" placeholder="paris , france" disabled>
+              </div>
+            </div>
+      </div>
+    </div>
+   
+    <div class="modal-footer">
+      <div class="form-group position-relative has-icon-left mb-0">
+        <button id="cancel-flight-btn" class="btn btn-warning add-contact-item" (click)="d('Cross click')">
+          <i class="la la-paper-plane-o d-lg-none"></i>
+          <span class="d-none d-lg-block">
+            Cancel
+          </span>
+        </button>
+        &nbsp;
+        <button type="submit" id="add-flight-btn" class="btn btn-info add-contact-item">
+          <i class="la la-paper-plane-o d-lg-none"></i>
+          <span class="d-none d-lg-block">
+            Add Fligh
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

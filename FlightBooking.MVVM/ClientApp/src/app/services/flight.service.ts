@@ -2,50 +2,15 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { extend } from 'webdriver-js-extender';
+import { FlightBaseModel, PlaneDetail, AirportBaseModel, AirportDetail } from '../models/models';
 
-export class FlightBaseModel {
-    public id: number;
-}
 
-export class FlightDetail extends FlightBaseModel {
-    public planeId: number;
-    public flightFromId: number;
-    public flightToId: number;
-    public flightComsuption: number;
-    public flightDuration: number;
-    public creationDate: Date;
-    public flightFrom: AirportDetail;
-    public flightTo: AirportDetail;
-    public plane: PlaneDetail;
-
-}
-
-export class PlaneBaseModel {
-    public id: number;
-    public name: string;
-}
-export class PlaneDetail  extends PlaneBaseModel {
-    public comsumptionEffort: number;
-    public comsumptionRate: number;
-    public speed: number;
-}
-export class AirportBaseModel {
-    public id: number;
-    public name: string;
-}
-export class AirportDetail extends AirportBaseModel {
-    public city: string;
-    public country: string;
-    public latitude: number;
-    public longitude: number;
-  
-}
 @Injectable({
   providedIn: 'root'
 })
 export class FlightService {
     _baseURL: string;
-    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { this._baseURL = baseUrl+'/flight' }
+    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { this._baseURL = baseUrl+'api/flight' }
 
     public getAllFlights(): Observable<FlightBaseModel[]> {
         const fullUrl = this._baseURL + '/get-all-flight';
@@ -62,7 +27,7 @@ export class FlightService {
             fullUrl
         );
     }
-    public getAllAirports(): Observable<PlaneDetail[]> {
+    public getAllAirports(): Observable<AirportBaseModel[]> {
         const fullUrl = this._baseURL + '/get-all-airport';
 
         return this.http.get<PlaneDetail[]>(
