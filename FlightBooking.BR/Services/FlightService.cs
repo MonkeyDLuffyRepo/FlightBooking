@@ -68,7 +68,9 @@ namespace FlightBooking.BR.Services
             flightModel.IsDeleted = false;
             flightModel.CreationDate = DateTime.Now;
 
+            flightModel.FlightDistance = CalculateDistanceBetweenAirports(flightModel.FlightFrom, flightModel.FlightTo);
             flightModel.FlightComsuption = CalculateComsumption(flightModel);
+      
             flightModel.Plane = null;
             flightModel.FlightFrom = null;
             flightModel.FlightTo = null;
@@ -90,7 +92,9 @@ namespace FlightBooking.BR.Services
             flight.FlightToId = flightModel.FlightToId;
             flight.FlightDuration = flightModel.FlightDuration;
             flight.FlightStartTime = flightModel.FlightStartTime;
-            flight.FlightComsuption = CalculateComsumption(flight);
+
+            flightModel.FlightDistance = CalculateDistanceBetweenAirports(flightModel.FlightFrom, flightModel.FlightTo);
+            flight.FlightComsuption = CalculateComsumption(flightModel);
 
             _context.Entry(flight).State = EntityState.Modified;
             _context.SaveChanges();
