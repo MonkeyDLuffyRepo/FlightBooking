@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { extend } from 'webdriver-js-extender';
 import { FlightBaseModel, PlaneDetail, AirportBaseModel, AirportDetail } from '../models/models';
@@ -16,7 +16,8 @@ export class FlightService {
         const fullUrl = this._baseURL + '/get-all-flight';
 
         return this.http.get<FlightBaseModel[]>(
-            fullUrl
+            fullUrl,
+            { headers: { 'Content-Type': 'application/json' } }
         );
     }
 
@@ -52,7 +53,7 @@ export class FlightService {
         );
     }
 
-    public updateContact(updatedFlight: FlightBaseModel): Observable<void> {
+    public updateFlight(updatedFlight: FlightBaseModel): Observable<void> {
         const fullUrl = this._baseURL + '/update-flight';
 
         return this.http.put<void>(

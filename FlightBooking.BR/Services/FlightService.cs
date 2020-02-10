@@ -64,9 +64,14 @@ namespace FlightBooking.BR.Services
         // create flight
         public double CreateFlight(Flight flightModel)
         {
+          
             flightModel.IsDeleted = false;
             flightModel.CreationDate = DateTime.Now;
+
             flightModel.FlightComsuption = CalculateComsumption(flightModel);
+            flightModel.Plane = null;
+            flightModel.FlightFrom = null;
+            flightModel.FlightTo = null;
             _context.Flights.Add(flightModel);
             _context.SaveChanges();
 

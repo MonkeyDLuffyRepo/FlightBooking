@@ -8,34 +8,18 @@
           <th scope="col">Flight From</th>
           <th scope="col">Flight To</th>
           <th scope="col">Plane </th>
-          <th scope="col">Duration </th>
+          <th scope="col">Distance </th>
           <th scope="col">Comsumption </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let flight of flightList" (click)="editFlight(flight.id)">
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@fat</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
+          <td>{{flight.flightFrom.name}}</td>
+          <td>{{flight.flightTo.name}}</td>
+          <td>{{flight.plane.name}}</td>
+          <td>{{flight.flightDistance}}</td>
+          <td>{{flight.flightComsuption}}</td>
         </tr>
       </tbody>
     </table>

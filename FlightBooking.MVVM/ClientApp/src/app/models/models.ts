@@ -8,10 +8,11 @@ export class FlightDetail extends FlightBaseModel {
     public flightToId: number;
     public flightComsuption: number;
     public flightDuration: number;
+    public flightDistance:number;
     public creationDate: Date;
-    public flightFrom: AirportDetail;
-    public flightTo: AirportDetail;
-    public plane: PlaneDetail;
+    public flightFrom?: AirportDetail;
+    public flightTo?: AirportDetail;
+    public plane?: PlaneDetail;
 
 }
 

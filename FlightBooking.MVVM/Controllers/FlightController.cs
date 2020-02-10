@@ -52,13 +52,19 @@ namespace FlightBooking.MVVM.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("get-all-flight")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public IActionResult GetAllFlights()
         {
             _logger.LogDebug("FlightController: GetAllFlights() called");
-            return Ok(_flightService.GetAllFlight());
+            try
+            {
+                return Ok(_flightService.GetAllFlight());
+            }catch(Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                throw new Exception("An error occurred on the server.");
+            }
+            
         }
         /// <summary>
         /// Get Flight By Id

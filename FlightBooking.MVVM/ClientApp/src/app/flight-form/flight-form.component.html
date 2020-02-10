@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="pageLoading">
 <form (ngSubmit)="addNewFlight(addForm)" #addForm="ngForm">
     <h3>Add Flight </h3>
     <hr />
@@ -8,11 +8,15 @@
           <div class="col-md-6">
             <div class="form-group ">
               <label for="flightFromId">Airport From :</label>
-              <select name="flightFromId" id="flightFromId" class="name form-control"
-                      (change)="getSelectedAirportFrom($event)">
-                <option selected value="undefined">Select Airport </option>
+              <select name="flightFromId" id="flightFromId" class="name form-control" 
+                      (change)="getSelectedAirportFrom($event)" [(ngModel)]="currentFlight.flightFromId"
+                       [ngClass]="{ 'is-invalid': addForm.submitted && addForm.invalid }" required>
+                <option selected value="0">Select Airport </option>
                 <option *ngFor="let airport of airports" [value]="airport.id">{{airport.name}} </option>
               </select>
+              <div *ngIf="addForm.submitted && addForm.invalid" class="invalid-feedback">
+                <div> please select airport </div>
+              </div>
             </div>
           </div>
           <!-- Airport From information -->
@@ -27,10 +31,14 @@
             <div class="form-group ">
               <label for="flightToId">Airport To :</label>
               <select name="flightToId" id="flightToId" class="name form-control"
-                      (change)="getSelectedAirportTo($event)">
-                <option selected value="undefined">Select Airport</option>
+                      (change)="getSelectedAirportTo($event)" [(ngModel)]="currentFlight.flightToId"
+                      [ngClass]="{ 'is-invalid': addForm.submitted && addForm.invalid }" required>
+                <option selected value="0">Select Airport</option>
                 <option *ngFor="let airport of airports" [value]="airport.id">{{airport.name}} </option>
               </select>
+              <div *ngIf="addForm.submitted && addForm.invalid" class="invalid-feedback">
+                <div> please select airport </div>
+              </div>
             </div>
           </div>
            <!-- Airport To information -->
@@ -45,25 +53,45 @@
             <div class="form-group ">
               <label for="planeId">Choice Plane :</label>
               <select name="planeId" id="planeId" class="name form-control"
-                      (change)="getSelectedAirportTo($event)">
-                <option selected value="undefined">Select Plane</option>
+              (change)="getSelectedPlane($event)" [(ngModel)]="currentFlight.planeId"
+              [ngClass]="{ 'is-invalid': addForm.submitted && addForm.invalid }" required>
+                <option selected value="0">Select Plane</option>
                 <option *ngFor="let plane of planes" [value]="plane.id">{{plane.name}} </option>
               </select>
-            </div>
-          </div>
-            <!-- Plane  information -->
-            <div class="col-md-6">
-              <div class="form-group ">
-                <label >Plane Speed :</label>
-                <input type="text" class=" form-control" placeholder="paris , france" disabled>
+              <div *ngIf="addForm.submitted && addForm.invalid" class="invalid-feedback">
+                <div> please select airport </div>
               </div>
             </div>
+          </div>
+          <!-- Plane  information -->
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label>Plane Speed :</label>
+              <input type="text" class=" form-control" [(ngModel)]="speed" name="speed" disabled>
+            </div>
+          </div>
+          <!-- the distance between Airports-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Distance (Km):</label>
+              <input type="text" class="form-control" name="distance" 
+              [(ngModel)]="currentFlight.flightDistance" disabled/>
+            </div>
+          </div>
+           <!-- the distance between Airports-->
+           <div class="col-md-6">
+            <div class="form-group">
+              <label for="Comsumption">Kerosene Comsumption (l):</label>
+              <input type="text" class="form-control" name="Comsumption"
+              [(ngModel)]="currentFlight.flightComsuption"  disabled/>
+            </div>
+          </div>
       </div>
     </div>
    
     <div class="modal-footer">
       <div class="form-group position-relative has-icon-left mb-0">
-        <button id="cancel-flight-btn" class="btn btn-warning add-contact-item" (click)="d('Cross click')">
+        <button id="cancel-flight-btn" class="btn btn-warning add-contact-item" >
           <i class="la la-paper-plane-o d-lg-none"></i>
           <span class="d-none d-lg-block">
             Cancel
@@ -73,7 +101,7 @@
         <button type="submit" id="add-flight-btn" class="btn btn-info add-contact-item">
           <i class="la la-paper-plane-o d-lg-none"></i>
           <span class="d-none d-lg-block">
-            Add Fligh
+           Save Flight
           </span>
         </button>
       </div>

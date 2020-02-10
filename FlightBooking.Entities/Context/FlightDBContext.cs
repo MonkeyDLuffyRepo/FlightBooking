@@ -33,36 +33,39 @@ namespace FlightBooking.Entities.Context
                 entity.ToTable("Flight");
 
                 entity.HasOne(d => d.Plane)
-                  .WithMany(p => p.Flights)
-                  .HasForeignKey(d => d.PlaneId)
-                  .OnDelete(DeleteBehavior.NoAction)
-                  .HasConstraintName("FK_Flight_Plane");
-
-             
+                   .WithOne()
+                   .HasForeignKey<Flight>(d => d.PlaneId)
+                   .HasConstraintName("FK_Flight_Plane")
+                   .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.FlightFrom)
-                   .WithMany(p => p.FlightFroms)
-                   .HasForeignKey(d => d.FlightFromId)
-                   .OnDelete(DeleteBehavior.NoAction)
-                   .HasConstraintName("FK_FlightFrom_Airport");
+                   .WithOne()
+                   .HasForeignKey<Flight>(d => d.FlightFromId)
+                   .HasConstraintName("FK_FlightFrom_Airport")
+                   .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.FlightTo)
-                  .WithMany(p => p.FlightTos)
-                  .HasForeignKey(d => d.FlightToId)
-                  .OnDelete(DeleteBehavior.NoAction)
-                  .HasConstraintName("FK_FlightTo_Airport");
+                  .WithOne()
+                  .HasForeignKey<Flight>(d => d.FlightToId)
+                  .HasConstraintName("FK_FlightTo_Airport")
+                  .OnDelete(DeleteBehavior.Restrict);
+                  
             });
 
             modelBuilder.Entity<Plane>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.ToTable("Plane");
+                entity.Ignore(e => e.Flights);
+
             });
 
             modelBuilder.Entity<Airport>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.ToTable("Airport");
+                entity.Ignore(e => e.FlightFroms);
+                entity.Ignore(e => e.FlightTos);
             });
 
             modelBuilder.Entity<Plane>().HasData(
