@@ -23,6 +23,6 @@ export class HomeComponent implements OnInit {
   }
 
   editFlight(flightId){
-     this.router.navigate['/flight-from/'+flightId];
+     this.router.navigate(['/flight-from/'+flightId]);
   }
 }
