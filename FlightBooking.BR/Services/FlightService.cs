@@ -93,7 +93,7 @@ namespace FlightBooking.BR.Services
             flight.FlightDuration = flightModel.FlightDuration;
             flight.FlightStartTime = flightModel.FlightStartTime;
 
-            flightModel.FlightDistance = CalculateDistanceBetweenAirports(flightModel.FlightFrom, flightModel.FlightTo);
+            flight.FlightDistance = CalculateDistanceBetweenAirports(flightModel.FlightFrom, flightModel.FlightTo);
             flight.FlightComsuption = CalculateComsumption(flightModel);
 
             _context.Entry(flight).State = EntityState.Modified;

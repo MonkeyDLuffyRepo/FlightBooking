@@ -33,23 +33,22 @@ namespace FlightBooking.Entities.Context
                 entity.ToTable("Flight");
 
                 entity.HasOne(d => d.Plane)
-                   .WithOne()
-                   .HasForeignKey<Flight>(d => d.PlaneId)
+                   .WithMany()
+                   .HasForeignKey(d => d.PlaneId)
                    .HasConstraintName("FK_Flight_Plane")
                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.FlightFrom)
-                   .WithOne()
-                   .HasForeignKey<Flight>(d => d.FlightFromId)
+                   .WithMany()
                    .HasConstraintName("FK_FlightFrom_Airport")
                    .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasOne(d => d.FlightTo)
-                  .WithOne()
-                  .HasForeignKey<Flight>(d => d.FlightToId)
+                  .WithMany()
+                  .HasForeignKey(d => d.FlightToId)
                   .HasConstraintName("FK_FlightTo_Airport")
                   .OnDelete(DeleteBehavior.Restrict);
-                  
+
             });
 
             modelBuilder.Entity<Plane>(entity =>

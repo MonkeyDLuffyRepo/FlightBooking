@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlightBooking.Entities.Migrations
 {
     [DbContext(typeof(FlightDBContext))]
-    [Migration("20200210104724_InitialMigration")]
+    [Migration("20200210132859_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 1,
                             City = "Atlanta, Georgia",
                             Country = "United States",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(4778),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(6639),
                             Latitude = -29.832450000000001,
                             Longitude = 31.04034,
                             Name = "Hartsfield–Jackson Atlanta International Airport"
@@ -66,7 +66,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 2,
                             City = "Roissy-en-France, Île-de-Franc",
                             Country = "France",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6627),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8623),
                             Latitude = -0.83245000000000002,
                             Longitude = 31.04034,
                             Name = "Paris-Charles de Gaulle Airport"
@@ -76,7 +76,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 3,
                             City = "Ōta, Tokyo",
                             Country = "Japan",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6680),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8676),
                             Latitude = -51.397919999999999,
                             Longitude = -0.12084,
                             Name = "Tokyo Haneda Airport"
@@ -86,7 +86,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 4,
                             City = "Garhoud, Dubai",
                             Country = "United Arab Emirates",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6684),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8680),
                             Latitude = 77.216700000000003,
                             Longitude = 28.666699999999999,
                             Name = " Dubai International Airport"
@@ -96,7 +96,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 5,
                             City = "Casablanca",
                             Country = "Morocco",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6689),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8685),
                             Latitude = -34.832450000000001,
                             Longitude = 28.666699999999999,
                             Name = "Mohammed V Airport"
@@ -106,7 +106,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 6,
                             City = "Mississauga, Ontario",
                             Country = "Canada",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6692),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8690),
                             Latitude = 77.033299999999997,
                             Longitude = 77.033299999999997,
                             Name = "Toronto Pearson International Airport"
@@ -116,7 +116,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 7,
                             City = "Barcelona",
                             Country = "Spain",
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 203, DateTimeKind.Local).AddTicks(6696),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 76, DateTimeKind.Local).AddTicks(8693),
                             Latitude = -28.466699999999999,
                             Longitude = -0.83245000000000002,
                             Name = "Barcelona–El Prat Airport"
@@ -159,14 +159,11 @@ namespace FlightBooking.Entities.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlightFromId")
-                        .IsUnique();
+                    b.HasIndex("FlightFromId");
 
-                    b.HasIndex("FlightToId")
-                        .IsUnique();
+                    b.HasIndex("FlightToId");
 
-                    b.HasIndex("PlaneId")
-                        .IsUnique();
+                    b.HasIndex("PlaneId");
 
                     b.ToTable("Flight");
                 });
@@ -203,7 +200,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 1,
                             ComsumptionEffort = 123.0,
                             ComsumptionRate = 30.0,
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 199, DateTimeKind.Local).AddTicks(7826),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 72, DateTimeKind.Local).AddTicks(9181),
                             Name = "Wright Flyer",
                             Speed = 200.0
                         },
@@ -212,7 +209,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 2,
                             ComsumptionEffort = 340.0,
                             ComsumptionRate = 50.0,
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 202, DateTimeKind.Local).AddTicks(2799),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 75, DateTimeKind.Local).AddTicks(4805),
                             Name = "Supermarine Spitfire",
                             Speed = 600.0
                         },
@@ -221,7 +218,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 3,
                             ComsumptionEffort = 400.0,
                             ComsumptionRate = 100.0,
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 202, DateTimeKind.Local).AddTicks(2860),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 75, DateTimeKind.Local).AddTicks(4911),
                             Name = "Boeing 787",
                             Speed = 1000.0
                         },
@@ -230,7 +227,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 4,
                             ComsumptionEffort = 300.0,
                             ComsumptionRate = 145.0,
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 202, DateTimeKind.Local).AddTicks(2865),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 75, DateTimeKind.Local).AddTicks(4917),
                             Name = "Learjet 23",
                             Speed = 450.0
                         },
@@ -239,7 +236,7 @@ namespace FlightBooking.Entities.Migrations
                             Id = 5,
                             ComsumptionEffort = 140.0,
                             ComsumptionRate = 80.0,
-                            CreationDate = new DateTime(2020, 2, 10, 11, 47, 24, 202, DateTimeKind.Local).AddTicks(2869),
+                            CreationDate = new DateTime(2020, 2, 10, 14, 28, 59, 75, DateTimeKind.Local).AddTicks(4921),
                             Name = "Lockheed C-130",
                             Speed = 500.0
                         });
@@ -248,22 +245,22 @@ namespace FlightBooking.Entities.Migrations
             modelBuilder.Entity("FlightBooking.Entities.Models.Flight", b =>
                 {
                     b.HasOne("FlightBooking.Entities.Models.Airport", "FlightFrom")
-                        .WithOne()
-                        .HasForeignKey("FlightBooking.Entities.Models.Flight", "FlightFromId")
+                        .WithMany()
+                        .HasForeignKey("FlightFromId")
                         .HasConstraintName("FK_FlightFrom_Airport")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FlightBooking.Entities.Models.Airport", "FlightTo")
-                        .WithOne()
-                        .HasForeignKey("FlightBooking.Entities.Models.Flight", "FlightToId")
+                        .WithMany()
+                        .HasForeignKey("FlightToId")
                         .HasConstraintName("FK_FlightTo_Airport")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FlightBooking.Entities.Models.Plane", "Plane")
-                        .WithOne()
-                        .HasForeignKey("FlightBooking.Entities.Models.Flight", "PlaneId")
+                        .WithMany()
+                        .HasForeignKey("PlaneId")
                         .HasConstraintName("FK_Flight_Plane")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

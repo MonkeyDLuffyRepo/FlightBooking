@@ -143,7 +143,7 @@ export class FlightFormComponent implements OnInit {
                     (data: number) => {
                         this.toastr.success('Flight created successful', 'Success',
                             { timeOut: 2000 });
-                        this.router.navigate['/']
+                        this.router.navigate(['/'])
                     },
                     (error: any) => console.log(error)
                 );
@@ -152,7 +152,7 @@ export class FlightFormComponent implements OnInit {
                     (data: void) => {
                         this.toastr.success('Flight updated successful', 'Success',
                             { timeOut: 2000 });
-                        this.router.navigate['/']
+                        this.router.navigate(['/'])
                     },
                     (error: any) => console.log(error)
                 );

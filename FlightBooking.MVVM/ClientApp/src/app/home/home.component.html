@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let flight of flightList" (click)="editFlight(flight.id)">
-          <th scope="row">1</th>
+          <th scope="row">#</th>
           <td>{{flight.flightFrom.name}}</td>
           <td>{{flight.flightTo.name}}</td>
           <td>{{flight.plane.name}}</td>
